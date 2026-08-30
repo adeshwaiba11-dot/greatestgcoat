@@ -7,199 +7,652 @@
 body {
     font-family: 'Arial', sans-serif;
     overflow: hidden;
+    background: #000;
 }
 
-.container {
-    display: flex;
-    min-height: 100vh;
-}
 
-.panel {
-    flex: 1;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+/* =========================================
+   WELCOME SCREEN
+========================================= */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    transition: all 0.6s ease;
-    cursor: pointer;
+
+    text-align: center;
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.88)
+        ),
+        url("images/aot.jpg") center/cover no-repeat;
+
+    color: white;
+
+    overflow: hidden;
 }
 
-/* Dark gradient overlay */
-.panel::before {
+
+/* Scanline effect */
+
+.welcome-screen::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
-    transition: 0.5s;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.035) 0px,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px,
+            transparent 4px
+        );
 }
 
-/* Content styling */
-.panel h2 {
-    position: relative;
-    color: white;
-    margin-bottom: 20px;
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255,0,0,0.7);
-    z-index: 1;
-}
 
-.panel a {
-    position: relative;
-    margin-bottom: 40px;
-    padding: 10px 25px;
-    text-decoration: none;
-    color: white;
-    border: 2px solid red;
-    border-radius: 30px;
-    transition: 0.3s;
-    z-index: 1;
-}
+/* Red atmospheric glow */
 
-/* Button hover glow */
-.panel a:hover {
-    background: red;
-    box-shadow: 0 0 20px red;
-}
+.welcome-screen::after {
+    content: "";
+    position: absolute;
 
-/* Panel hover animation */
-.panel:hover {
-    flex: 2;
-    transform: scale(1.05);
-}
+    width: 450px;
+    height: 450px;
 
-/* Slight image zoom on hover */
-.panel:hover::before {
-    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5));
-}
+    background: rgba(255,0,40,0.16);
 
-.music-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(0,0,0,0.7);
-    border: 2px solid red;
-    color: white;
-    font-size: 20px;
-    padding: 10px 15px;
+    filter: blur(120px);
+
     border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* Keep content above effects */
+
+.welcome-screen > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* System text */
+
+.system-text {
+    font-family: monospace;
+
+    color: #ff3030;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 25px;
+
+    animation: warningBlink 1.2s infinite;
+}
+
+
+/* Main title */
+
+.welcome-screen h1 {
+    font-size: clamp(38px, 8vw, 90px);
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    line-height: 1.1;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.5),
+        0 0 30px rgba(255,0,0,0.4);
+}
+
+
+/* GREATESTGCOAT */
+
+.welcome-screen h1 span {
+    display: block;
+
+    color: #ff3030;
+
+    margin-top: 10px;
+
+    text-shadow:
+        0 0 10px #ff3030,
+        0 0 30px rgba(255,0,0,0.8),
+        0 0 60px rgba(255,0,0,0.45);
+
+    animation: glitchTitle 2.5s infinite;
+}
+
+
+/* Subtitle */
+
+.subtitle {
+    margin-top: 25px;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: #aaa;
+}
+
+
+/* Divider */
+
+.line {
+    margin: 25px 0;
+
+    color: #ff3030;
+
+    font-family: monospace;
+
+    opacity: 0.7;
+}
+
+
+/* Intro text */
+
+.intro {
+    font-family: monospace;
+
+    color: #ddd;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* Status box */
+
+.status-box {
+    margin-top: 25px;
+
+    padding: 18px 25px;
+
+    min-width: 310px;
+
+    text-align: left;
+
+    background: rgba(0,0,0,0.55);
+
+    border: 1px solid rgba(255,48,48,0.55);
+
+    box-shadow:
+        0 0 20px rgba(255,0,0,0.12);
+
+    font-family: monospace;
+}
+
+
+.status-box p {
+    margin: 7px 0;
+
+    color: #777;
+}
+
+
+.status-box span {
+    color: #ff3030;
+
+    text-shadow: 0 0 8px #ff3030;
+}
+
+
+/* Warning */
+
+.warning {
+    margin-top: 25px;
+
+    font-family: monospace;
+
+    color: #ff3030;
+
+    letter-spacing: 4px;
+
+    animation: warningBlink 1s infinite;
+}
+
+
+/* Enter text */
+
+.enter-text {
+    margin-top: 15px;
+
+    font-family: monospace;
+
+    color: #aaa;
+
+    letter-spacing: 3px;
+}
+
+
+/* ENTER button */
+
+.welcome-screen button {
+    margin-top: 18px;
+
+    padding: 13px 42px;
+
+    background: transparent;
+
+    color: #ff3030;
+
+    border: 1px solid #ff3030;
+
+    font-family: monospace;
+
+    font-size: 15px;
+
+    letter-spacing: 4px;
+
     cursor: pointer;
+
     transition: 0.3s;
-    z-index: 999;
 }
 
-.music-toggle:hover {
-    background: red;
-    box-shadow: 0 0 15px red;
+
+.welcome-screen button:hover {
+    background: #ff3030;
+
+    color: black;
+
+    box-shadow:
+        0 0 20px #ff3030,
+        0 0 45px rgba(255,0,0,0.5);
 }
 
-.music-toggle.playing {
-    animation: pulse 1.5s infinite;
-    box-shadow: 0 0 25px red;
+
+/* =========================================
+   ANIME PANELS
+========================================= */
+
+.container {
+    display: flex;
+
+    min-height: 100vh;
 }
 
-@keyframes pulse {
-    0% { box-shadow: 0 0 10px red; }
-    50% { box-shadow: 0 0 30px red; }
-    100% { box-shadow: 0 0 10px red; }
-}
-
-.panel {
-    transform: translateY(100%);
-    animation: slideUp 1s forwards;
-}
-
-.panel:nth-child(1) { animation-delay: 0.2s; }
-.panel:nth-child(2) { animation-delay: 0.4s; }
-.panel:nth-child(3) { animation-delay: 0.6s; }
-.panel:nth-child(4) { animation-delay: 0.8s; }
-.panel:nth-child(5) { animation-delay: 1s; }
-.panel:nth-child(6) { animation-delay: 1.2s; }
-
-@keyframes slideUp {
-    to { transform: translateY(0); }
-}
-
-.panel:nth-child(1) { animation-delay: 0.2s; }
-.panel:nth-child(2) { animation-delay: 0.4s; }
-.panel:nth-child(3) { animation-delay: 0.6s; }
-.panel:nth-child(4) { animation-delay: 0.8s; }
-.panel:nth-child(5) { animation-delay: 1s; }
-.panel:nth-child(6) { animation-delay: 1.2s; }
-
-@keyframes slideUp {
-    to { transform: translateY(0); }
-}
-
-.panel:hover {
-    flex: 2;
-}
 
 .panel {
     flex: 1;
+
+    background-size: cover;
+
+    background-position: center;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
     transition: all 0.6s ease;
+
+    cursor: pointer;
+
+    transform: translateY(100%);
+
+    animation: slideUp 1s forwards;
 }
 
-.panel.active {
-    flex: 3;
+
+/* Dark gradient */
+
+.panel::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.9),
+            rgba(0,0,0,0.3)
+        );
+
+    transition: 0.5s;
 }
+
+
+/* Panel text */
+
+.panel h2 {
+    position: relative;
+
+    color: white;
+
+    margin-bottom: 20px;
+
+    font-size: 22px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px rgba(255,0,0,0.7);
+
+    z-index: 1;
+}
+
+
+/* Manga button */
+
+.panel a {
+    position: relative;
+
+    margin-bottom: 40px;
+
+    padding: 10px 25px;
+
+    text-decoration: none;
+
+    color: white;
+
+    border: 2px solid red;
+
+    border-radius: 30px;
+
+    transition: 0.3s;
+
+    z-index: 1;
+}
+
+
+.panel a:hover {
+    background: red;
+
+    box-shadow:
+        0 0 20px red;
+}
+
+
+/* Panel hover */
+
+.panel:hover {
+    flex: 2;
+
+    transform: scale(1.05);
+}
+
+
+.panel:hover::before {
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.95),
+            rgba(0,0,0,0.5)
+        );
+}
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+.music-toggle {
+    position: fixed;
+
+    top: 20px;
+
+    right: 20px;
+
+    background: rgba(0,0,0,0.7);
+
+    border: 2px solid red;
+
+    color: white;
+
+    font-size: 20px;
+
+    padding: 10px 15px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    z-index: 999;
+}
+
+
+.music-toggle:hover {
+    background: red;
+
+    box-shadow:
+        0 0 15px red;
+}
+
+
+.music-toggle.playing {
+    animation: pulse 1.5s infinite;
+
+    box-shadow:
+        0 0 25px red;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 10px red;
+    }
+
+    50% {
+        box-shadow: 0 0 30px red;
+    }
+
+    100% {
+        box-shadow: 0 0 10px red;
+    }
+
+}
+
+
+@keyframes slideUp {
+
+    to {
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes warningBlink {
+
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+
+}
+
+
+@keyframes glitchTitle {
+
+    0%, 90%, 100% {
+        transform: translateX(0);
+    }
+
+    92% {
+        transform: translateX(-4px);
+    }
+
+    94% {
+        transform: translateX(4px);
+    }
+
+}
+
+
+/* Panel delays */
+
+.panel:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.panel:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.panel:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.panel:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.panel:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.panel:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+
+/* Cursor glow */
 
 .cursor-glow {
     position: fixed;
+
     width: 20px;
+
     height: 20px;
+
     background: red;
+
     border-radius: 50%;
+
     pointer-events: none;
+
     filter: blur(15px);
+
     z-index: 9999;
 }
 
-/* 📱 Mobile Responsive Layout */
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 768px) {
 
     body {
-    font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
+        overflow-x: hidden;
     }
 
     .container {
         flex-direction: column;
+
         height: auto;
     }
 
     .panel {
         height: 75vh;
+
         flex: none !important;
+
         animation: none !important;
+
         transform: none !important;
     }
 
     .panel.active {
         height: 75vh;
+
         flex: none !important;
     }
 
     .panel h2 {
         font-size: 30px;
+
         text-align: center;
     }
 
     .panel a {
         padding: 10px 20px;
+
         font-size: 15px;
     }
 
     .music-toggle {
         top: 12px;
+
         right: 12px;
+
         font-size: 18px;
     }
-}
 
 
+    /* Mobile welcome */
 
+    .welcome-screen {
+        padding: 18px;
+    }
+
+    .welcome-screen h1 {
+        font-size: 38px;
+
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+    .status-box {
+        width: 100%;
+
+        max-width: 320px;
+
+        min-width: 0;
+
+        padding: 15px;
+    }
+
+    .intro {
+        font-size: 13px;
+    }
+
+    .line {
+        font-size: 11px;
+    }
+
+    }
