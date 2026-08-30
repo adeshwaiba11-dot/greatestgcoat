@@ -2,134 +2,500 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GREATESTGCOAT // ANIME DOMAIN</title>
+    <title>GREATESTGCOAT // ANIME ARCHIVE</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
+<!-- =========================================
+     WELCOME SCREEN
+========================================= -->
+
 <div class="welcome-screen">
 
-    <div class="system-text">
-        [ SYSTEM ONLINE ]
-    </div>
+    <div class="system-text" id="systemText"></div>
 
-    <h1>
-        WELCOME TO
-        <span>GREATESTGCOAT</span>
-    </h1>
+    <h1 id="mainTitle"></h1>
 
-    <p class="subtitle">
-        THE DOMAIN HAS BEEN ACTIVATED.
-    </p>
+    <p class="subtitle" id="subtitle"></p>
 
-    <div class="line">
-        ═══════════════════════════
-    </div>
+    <div class="line" id="divider"></div>
 
-    <p class="intro">
-        Welcome, members.
-        <br><br>
-        This isn't just another anime page.
-        <br>
-        This is our domain.
-    </p>
+    <div class="intro" id="intro"></div>
 
-    <div class="status-box">
+    <div class="status-box" id="statusBox"></div>
 
-        <p>GROUP STATUS : <span>ONLINE</span></p>
+    <div class="warning" id="warning"></div>
 
-        <p>MEMBERS : <span>CLASSIFIED</span></p>
+    <p class="enter-text" id="enterText"></p>
 
-        <p>POWER LEVEL : <span>UNKNOWN</span></p>
-
-        <p>DOMAIN : <span>GREATESTGCOAT</span></p>
-
-    </div>
-
-    <div class="warning">
-        ⚠ SYSTEM WARNING ⚠
-    </div>
-
-    <p class="enter-text">
-        ENTER THE DOMAIN.
-    </p>
-
-    <button onclick="enterDomain()">
-        ENTER
+    <button
+        id="enterButton"
+        onclick="enterDomain()"
+        style="display:none;">
+        ENTER ARCHIVE
     </button>
 
 </div>
 
 
+
+<!-- =========================================
+     ANIME ARCHIVE
+========================================= -->
+
 <div id="anime-domain" class="container">
 
     <div class="cursor-glow"></div>
 
+
+    <!-- Background Music -->
+
     <audio id="bgMusic" loop>
-        <source src="music/victory-theme.mp3" type="audio/mpeg">
+
+        <source
+            src="music/victory-theme.mp3"
+            type="audio/mpeg">
+
     </audio>
 
-    <div class="music-toggle" onclick="toggleMusic()">
+
+    <div
+        class="music-toggle"
+        onclick="toggleMusic()">
+
         🎵
+
     </div>
 
 
-    <div class="panel" style="background-image: url('images/demon-slayer.jpg');">
+
+    <!-- Demon Slayer -->
+
+    <div
+        class="panel"
+        style="background-image:url('images/demon-slayer.jpg');">
+
         <h2>Demon Slayer</h2>
-        <a href="https://w1.read-demonslayer.com/" target="_blank">Read Manga</a>
+
+        <a
+            href="https://w1.read-demonslayer.com/"
+            target="_blank">
+
+            Read Manga
+
+        </a>
+
     </div>
 
 
-    <div class="panel" style="background-image: url('images/jjk.jpg');">
+
+    <!-- Jujutsu Kaisen -->
+
+    <div
+        class="panel"
+        style="background-image:url('images/jjk.jpg');">
+
         <h2>Jujutsu Kaisen</h2>
-        <a href="https://mangabuddy.com/read/jujutsu-kaisen/" target="_blank">Read Manga</a>
+
+        <a
+            href="https://mangabuddy.com/read/jujutsu-kaisen/"
+            target="_blank">
+
+            Read Manga
+
+        </a>
+
     </div>
 
 
-    <div class="panel" style="background-image: url('images/aot.jpg');">
+
+    <!-- Attack on Titan -->
+
+    <div
+        class="panel"
+        style="background-image:url('images/aot.jpg');">
+
         <h2>Attack on Titan</h2>
-        <a href="https://w39.read-attackontitan-manga.com/" target="_blank">Read Manga</a>
+
+        <a
+            href="https://w39.read-attackontitan-manga.com/"
+            target="_blank">
+
+            Read Manga
+
+        </a>
+
     </div>
 
 
-    <div class="panel" style="background-image: url('images/chainsaw.jpg');">
+
+    <!-- Chainsaw Man -->
+
+    <div
+        class="panel"
+        style="background-image:url('images/chainsaw.jpg');">
+
         <h2>Chainsaw Man</h2>
-        <a href="https://chainsawmann.com/" target="_blank">Read Manga</a>
+
+        <a
+            href="https://chainsawmann.com/"
+            target="_blank">
+
+            Read Manga
+
+        </a>
+
     </div>
 
 
-    <div class="panel" style="background-image: url('images/solo.jpg');">
+
+    <!-- Solo Leveling -->
+
+    <div
+        class="panel"
+        style="background-image:url('images/solo.jpg');">
+
         <h2>Solo Leveling</h2>
-        <a href="https://w19.sololevelinganime.com/" target="_blank">Read Manga</a>
+
+        <a
+            href="https://w19.sololevelinganime.com/"
+            target="_blank">
+
+            Read Manga
+
+        </a>
+
     </div>
 
 
-    <div class="panel" style="background-image: url('images/tokyo.jpg');">
+
+    <!-- Tokyo Revengers -->
+
+    <div
+        class="panel"
+        style="background-image:url('images/tokyo.jpg');">
+
         <h2>Tokyo Revengers</h2>
-        <a href="https://w23.read-tokyorevengers.com/" target="_blank">Read Manga</a>
+
+        <a
+            href="https://w23.read-tokyorevengers.com/"
+            target="_blank">
+
+            Read Manga
+
+        </a>
+
     </div>
 
 </div>
 
 
+
+<!-- =========================================
+     EXISTING SCRIPT
+========================================= -->
+
 <script src="script.js"></script>
+
+
+
+<!-- =========================================
+     ENTER DOMAIN
+========================================= -->
 
 <script>
 
 function enterDomain(){
 
-    document.querySelector(".welcome-screen").style.display = "none";
+    const welcome =
+        document.querySelector(".welcome-screen");
 
-    document.getElementById("anime-domain").style.display = "flex";
+    const domain =
+        document.getElementById("anime-domain");
+
+
+    welcome.style.opacity = "0";
+
+
+    setTimeout(() => {
+
+        welcome.style.display = "none";
+
+        domain.style.display = "flex";
+
+    }, 500);
 
 }
 
 </script>
 
+
+
+<!-- =========================================
+     TYPING INTRO
+========================================= -->
+
+<script>
+
+const systemText =
+    document.getElementById("systemText");
+
+const mainTitle =
+    document.getElementById("mainTitle");
+
+const subtitle =
+    document.getElementById("subtitle");
+
+const divider =
+    document.getElementById("divider");
+
+const intro =
+    document.getElementById("intro");
+
+const statusBox =
+    document.getElementById("statusBox");
+
+const warning =
+    document.getElementById("warning");
+
+const enterText =
+    document.getElementById("enterText");
+
+const enterButton =
+    document.getElementById("enterButton");
+
+
+
+/* =========================================
+   TYPE FUNCTION
+========================================= */
+
+function typeText(element, text, speed = 45){
+
+    return new Promise(resolve => {
+
+        let index = 0;
+
+
+        function type(){
+
+            if(index < text.length){
+
+                element.textContent +=
+                    text[index];
+
+                index++;
+
+                setTimeout(type, speed);
+
+            }
+
+            else{
+
+                resolve();
+
+            }
+
+        }
+
+
+        type();
+
+    });
+
+}
+
+
+
+/* =========================================
+   DELAY
+========================================= */
+
+function wait(time){
+
+    return new Promise(resolve => {
+
+        setTimeout(resolve, time);
+
+    });
+
+}
+
+
+
+/* =========================================
+   START INTRO
+========================================= */
+
+async function startIntro(){
+
+
+    /* Connection */
+
+    await typeText(
+        systemText,
+        "[ CONNECTION ESTABLISHED ]",
+        55
+    );
+
+
+    await wait(500);
+
+
+
+    /* Main title */
+
+    await typeText(
+        mainTitle,
+        "GREATESTGCOAT",
+        85
+    );
+
+
+    await wait(450);
+
+
+
+    /* Subtitle */
+
+    await typeText(
+        subtitle,
+        "Welcome to the community archive.",
+        45
+    );
+
+
+    await wait(350);
+
+
+
+    /* Divider */
+
+    await typeText(
+        divider,
+        "────────────────────────────",
+        20
+    );
+
+
+    await wait(350);
+
+
+
+    /* Intro */
+
+    await typeText(
+        intro,
+        "A space built around the anime, manga,",
+        38
+    );
+
+
+    intro.innerHTML += "<br>";
+
+
+    await typeText(
+        intro,
+        "and stories we enjoy together.",
+        38
+    );
+
+
+    await wait(500);
+
+
+
+    /* Status */
+
+    const statusLines = [
+
+        "ANIME COLLECTION     ✓",
+
+        "MANGA ARCHIVE        ✓",
+
+        "COMMUNITY ACCESS     ✓",
+
+        "SYSTEM STATUS        ONLINE"
+
+    ];
+
+
+    for(const text of statusLines){
+
+        const row =
+            document.createElement("p");
+
+
+        statusBox.appendChild(row);
+
+
+        await typeText(
+            row,
+            text,
+            35
+        );
+
+
+        await wait(160);
+
+    }
+
+
+    await wait(600);
+
+
+
+    /* Final message */
+
+    await typeText(
+        warning,
+        "WELCOME, MEMBER.",
+        55
+    );
+
+
+    await wait(400);
+
+
+    await typeText(
+        enterText,
+        "ACCESS THE ARCHIVE.",
+        50
+    );
+
+
+    await wait(500);
+
+
+
+    /* Show button */
+
+    enterButton.style.display =
+        "block";
+
+
+}
+
+
+
+/* Start */
+
+startIntro();
+
+</script>
+
+
 </body>
-        </html>
+
+</html>
