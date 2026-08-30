@@ -13,7 +13,6 @@
 
 </head>
 
-
 <body>
 
 
@@ -33,7 +32,17 @@
 
     <div class="intro" id="intro"></div>
 
-    <div class="status-box" id="statusBox"></div>
+    <div class="status-box">
+
+        <p id="status1"></p>
+
+        <p id="status2"></p>
+
+        <p id="status3"></p>
+
+        <p id="status4"></p>
+
+    </div>
 
     <div class="warning" id="warning"></div>
 
@@ -43,7 +52,9 @@
         id="enterButton"
         onclick="enterDomain()"
         style="display:none;">
+
         ENTER ARCHIVE
+
     </button>
 
 </div>
@@ -54,12 +65,17 @@
      ANIME ARCHIVE
 ========================================= -->
 
-<div id="anime-domain" class="container">
+<div
+    id="anime-domain"
+    class="container"
+    style="display:none;"
+>
+
 
     <div class="cursor-glow"></div>
 
 
-    <!-- Background Music -->
+    <!-- MUSIC -->
 
     <audio id="bgMusic" loop>
 
@@ -80,130 +96,131 @@
 
 
 
-    <!-- Demon Slayer -->
+    <!-- DEMON SLAYER -->
 
     <div
         class="panel"
-        style="background-image:url('images/demon-slayer.jpg');">
+        style="background-image:url('images/demon-slayer.jpg');"
+    >
 
         <h2>Demon Slayer</h2>
 
         <a
             href="https://w1.read-demonslayer.com/"
-            target="_blank">
-
+            target="_blank"
+        >
             Read Manga
-
         </a>
 
     </div>
 
 
 
-    <!-- Jujutsu Kaisen -->
+    <!-- JUJUTSU KAISEN -->
 
     <div
         class="panel"
-        style="background-image:url('images/jjk.jpg');">
+        style="background-image:url('images/jjk.jpg');"
+    >
 
         <h2>Jujutsu Kaisen</h2>
 
         <a
             href="https://mangabuddy.com/read/jujutsu-kaisen/"
-            target="_blank">
-
+            target="_blank"
+        >
             Read Manga
-
         </a>
 
     </div>
 
 
 
-    <!-- Attack on Titan -->
+    <!-- ATTACK ON TITAN -->
 
     <div
         class="panel"
-        style="background-image:url('images/aot.jpg');">
+        style="background-image:url('images/aot.jpg');"
+    >
 
         <h2>Attack on Titan</h2>
 
         <a
             href="https://w39.read-attackontitan-manga.com/"
-            target="_blank">
-
+            target="_blank"
+        >
             Read Manga
-
         </a>
 
     </div>
 
 
 
-    <!-- Chainsaw Man -->
+    <!-- CHAINSAW MAN -->
 
     <div
         class="panel"
-        style="background-image:url('images/chainsaw.jpg');">
+        style="background-image:url('images/chainsaw.jpg');"
+    >
 
         <h2>Chainsaw Man</h2>
 
         <a
             href="https://chainsawmann.com/"
-            target="_blank">
-
+            target="_blank"
+        >
             Read Manga
-
         </a>
 
     </div>
 
 
 
-    <!-- Solo Leveling -->
+    <!-- SOLO LEVELING -->
 
     <div
         class="panel"
-        style="background-image:url('images/solo.jpg');">
+        style="background-image:url('images/solo.jpg');"
+    >
 
         <h2>Solo Leveling</h2>
 
         <a
             href="https://w19.sololevelinganime.com/"
-            target="_blank">
-
+            target="_blank"
+        >
             Read Manga
-
         </a>
 
     </div>
 
 
 
-    <!-- Tokyo Revengers -->
+    <!-- TOKYO REVENGERS -->
 
     <div
         class="panel"
-        style="background-image:url('images/tokyo.jpg');">
+        style="background-image:url('images/tokyo.jpg');"
+    >
 
         <h2>Tokyo Revengers</h2>
 
         <a
             href="https://w23.read-tokyorevengers.com/"
-            target="_blank">
-
+            target="_blank"
+        >
             Read Manga
-
         </a>
 
     </div>
+
 
 </div>
 
 
 
 <!-- =========================================
-     EXISTING SCRIPT
+     EXISTING JAVASCRIPT
 ========================================= -->
 
 <script src="script.js"></script>
@@ -211,42 +228,13 @@
 
 
 <!-- =========================================
-     ENTER DOMAIN
+     WELCOME TYPING SYSTEM
 ========================================= -->
 
 <script>
 
-function enterDomain(){
 
-    const welcome =
-        document.querySelector(".welcome-screen");
-
-    const domain =
-        document.getElementById("anime-domain");
-
-
-    welcome.style.opacity = "0";
-
-
-    setTimeout(() => {
-
-        welcome.style.display = "none";
-
-        domain.style.display = "flex";
-
-    }, 500);
-
-}
-
-</script>
-
-
-
-<!-- =========================================
-     TYPING INTRO
-========================================= -->
-
-<script>
+/* ELEMENTS */
 
 const systemText =
     document.getElementById("systemText");
@@ -263,8 +251,17 @@ const divider =
 const intro =
     document.getElementById("intro");
 
-const statusBox =
-    document.getElementById("statusBox");
+const status1 =
+    document.getElementById("status1");
+
+const status2 =
+    document.getElementById("status2");
+
+const status3 =
+    document.getElementById("status3");
+
+const status4 =
+    document.getElementById("status4");
 
 const warning =
     document.getElementById("warning");
@@ -277,27 +274,25 @@ const enterButton =
 
 
 
-/* =========================================
-   TYPE FUNCTION
-========================================= */
+/* TYPE FUNCTION */
 
-function typeText(element, text, speed = 45){
+function typeText(element, text, speed){
 
-    return new Promise(resolve => {
+    return new Promise(function(resolve){
 
-        let index = 0;
+        let i = 0;
 
 
-        function type(){
+        function write(){
 
-            if(index < text.length){
+            if(i < text.length){
 
-                element.textContent +=
-                    text[index];
+                element.textContent =
+                    text.substring(0, i + 1);
 
-                index++;
+                i++;
 
-                setTimeout(type, speed);
+                setTimeout(write, speed);
 
             }
 
@@ -310,7 +305,7 @@ function typeText(element, text, speed = 45){
         }
 
 
-        type();
+        write();
 
     });
 
@@ -318,15 +313,13 @@ function typeText(element, text, speed = 45){
 
 
 
-/* =========================================
-   DELAY
-========================================= */
+/* DELAY */
 
-function wait(time){
+function delay(ms){
 
-    return new Promise(resolve => {
+    return new Promise(function(resolve){
 
-        setTimeout(resolve, time);
+        setTimeout(resolve, ms);
 
     });
 
@@ -334,14 +327,12 @@ function wait(time){
 
 
 
-/* =========================================
-   START INTRO
-========================================= */
+/* START */
 
-async function startIntro(){
+async function startWelcome(){
 
 
-    /* Connection */
+    /* 1 */
 
     await typeText(
         systemText,
@@ -350,24 +341,24 @@ async function startIntro(){
     );
 
 
-    await wait(500);
+    await delay(600);
 
 
 
-    /* Main title */
+    /* 2 */
 
     await typeText(
         mainTitle,
         "GREATESTGCOAT",
-        85
+        80
     );
 
 
-    await wait(450);
+    await delay(500);
 
 
 
-    /* Subtitle */
+    /* 3 */
 
     await typeText(
         subtitle,
@@ -376,11 +367,11 @@ async function startIntro(){
     );
 
 
-    await wait(350);
+    await delay(400);
 
 
 
-    /* Divider */
+    /* 4 */
 
     await typeText(
         divider,
@@ -389,16 +380,16 @@ async function startIntro(){
     );
 
 
-    await wait(350);
+    await delay(400);
 
 
 
-    /* Intro */
+    /* 5 */
 
     await typeText(
         intro,
         "A space built around the anime, manga,",
-        38
+        40
     );
 
 
@@ -408,55 +399,58 @@ async function startIntro(){
     await typeText(
         intro,
         "and stories we enjoy together.",
-        38
+        40
     );
 
 
-    await wait(500);
+    await delay(600);
 
 
 
-    /* Status */
+    /* STATUS */
 
-    const statusLines = [
-
+    await typeText(
+        status1,
         "ANIME COLLECTION     ✓",
+        35
+    );
 
+
+    await delay(180);
+
+
+    await typeText(
+        status2,
         "MANGA ARCHIVE        ✓",
+        35
+    );
 
+
+    await delay(180);
+
+
+    await typeText(
+        status3,
         "COMMUNITY ACCESS     ✓",
-
-        "SYSTEM STATUS        ONLINE"
-
-    ];
+        35
+    );
 
 
-    for(const text of statusLines){
-
-        const row =
-            document.createElement("p");
+    await delay(180);
 
 
-        statusBox.appendChild(row);
+    await typeText(
+        status4,
+        "SYSTEM STATUS        ONLINE",
+        35
+    );
 
 
-        await typeText(
-            row,
-            text,
-            35
-        );
-
-
-        await wait(160);
-
-    }
-
-
-    await wait(600);
+    await delay(700);
 
 
 
-    /* Final message */
+    /* FINAL */
 
     await typeText(
         warning,
@@ -465,7 +459,7 @@ async function startIntro(){
     );
 
 
-    await wait(400);
+    await delay(500);
 
 
     await typeText(
@@ -475,27 +469,58 @@ async function startIntro(){
     );
 
 
-    await wait(500);
+    await delay(500);
 
 
-
-    /* Show button */
+    /* BUTTON */
 
     enterButton.style.display =
         "block";
-
 
 }
 
 
 
-/* Start */
+/* ENTER */
 
-startIntro();
+function enterDomain(){
+
+    const welcome =
+        document.querySelector(".welcome-screen");
+
+    const archive =
+        document.getElementById("anime-domain");
+
+
+    welcome.style.transition =
+        "opacity 0.5s ease";
+
+    welcome.style.opacity =
+        "0";
+
+
+    setTimeout(function(){
+
+        welcome.style.display =
+            "none";
+
+        archive.style.display =
+            "flex";
+
+    }, 500);
+
+}
+
+
+
+/* START TYPING */
+
+startWelcome();
+
 
 </script>
 
 
 </body>
 
-</html>
+    </html>
