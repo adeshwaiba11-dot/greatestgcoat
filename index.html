@@ -1,13 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Anime Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GREATESTGCOAT // ANIME DOMAIN</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="welcome-screen">
+
+    <div class="system-text">
+        [ SYSTEM ONLINE ]
+    </div>
+
+    <h1>
+        WELCOME TO
+        <span>GREATESTGCOAT</span>
+    </h1>
+
+    <p class="subtitle">
+        THE DOMAIN HAS BEEN ACTIVATED.
+    </p>
+
+    <div class="line">
+        ═══════════════════════════
+    </div>
+
+    <p class="intro">
+        Welcome, members.
+        <br><br>
+        This isn't just another anime page.
+        <br>
+        This is our domain.
+    </p>
+
+    <div class="status-box">
+
+        <p>GROUP STATUS : <span>ONLINE</span></p>
+
+        <p>MEMBERS : <span>CLASSIFIED</span></p>
+
+        <p>POWER LEVEL : <span>UNKNOWN</span></p>
+
+        <p>DOMAIN : <span>GREATESTGCOAT</span></p>
+
+    </div>
+
+    <div class="warning">
+        ⚠ SYSTEM WARNING ⚠
+    </div>
+
+    <p class="enter-text">
+        ENTER THE DOMAIN.
+    </p>
+
+    <button onclick="enterDomain()">
+        ENTER
+    </button>
+
+</div>
+
+
+<div id="anime-domain" class="container">
 
     <div class="cursor-glow"></div>
 
@@ -19,30 +78,36 @@
         🎵
     </div>
 
+
     <div class="panel" style="background-image: url('images/demon-slayer.jpg');">
         <h2>Demon Slayer</h2>
         <a href="https://w1.read-demonslayer.com/" target="_blank">Read Manga</a>
     </div>
+
 
     <div class="panel" style="background-image: url('images/jjk.jpg');">
         <h2>Jujutsu Kaisen</h2>
         <a href="https://mangabuddy.com/read/jujutsu-kaisen/" target="_blank">Read Manga</a>
     </div>
 
+
     <div class="panel" style="background-image: url('images/aot.jpg');">
         <h2>Attack on Titan</h2>
         <a href="https://w39.read-attackontitan-manga.com/" target="_blank">Read Manga</a>
     </div>
+
 
     <div class="panel" style="background-image: url('images/chainsaw.jpg');">
         <h2>Chainsaw Man</h2>
         <a href="https://chainsawmann.com/" target="_blank">Read Manga</a>
     </div>
 
+
     <div class="panel" style="background-image: url('images/solo.jpg');">
         <h2>Solo Leveling</h2>
         <a href="https://w19.sololevelinganime.com/" target="_blank">Read Manga</a>
     </div>
+
 
     <div class="panel" style="background-image: url('images/tokyo.jpg');">
         <h2>Tokyo Revengers</h2>
@@ -51,11 +116,20 @@
 
 </div>
 
+
 <script src="script.js"></script>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+<script>
+
+function enterDomain(){
+
+    document.querySelector(".welcome-screen").style.display = "none";
+
+    document.getElementById("anime-domain").style.display = "flex";
+
+}
+
+</script>
+
 </body>
-
-</html>
-
+        </html>
