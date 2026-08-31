@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     overflow: hidden;
     background: #000;
 }
@@ -21,27 +21,25 @@ body {
     z-index: 10000;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    text-align: center;
     padding: 25px;
 
     background:
         linear-gradient(
-            rgba(0,0,0,0.72),
-            rgba(0,0,0,0.88)
+            rgba(0,0,0,0.76),
+            rgba(0,0,0,0.92)
         ),
         url("images/aot.jpg") center/cover no-repeat;
 
     color: white;
 
-    overflow: hidden;
+    overflow: auto;
 }
 
 
-/* Scanline effect */
+/* SCANLINES */
 
 .welcome-screen::before {
     content: "";
@@ -58,21 +56,24 @@ body {
             transparent 1px,
             transparent 4px
         );
+
+    z-index: 1;
 }
 
 
-/* Red atmospheric glow */
+/* RED ATMOSPHERE */
 
 .welcome-screen::after {
     content: "";
+
     position: absolute;
 
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
 
-    background: rgba(255,0,40,0.16);
+    background: rgba(255,0,40,0.12);
 
-    filter: blur(120px);
+    filter: blur(130px);
 
     border-radius: 50%;
 
@@ -80,15 +81,42 @@ body {
 }
 
 
-/* Keep content above effects */
+/* =========================================
+   TERMINAL FRAME
+========================================= */
 
-.welcome-screen > * {
+.terminal-frame {
     position: relative;
-    z-index: 2;
+    z-index: 3;
+
+    width: min(760px, 100%);
+
+    min-height: 90vh;
+
+    padding: 35px 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    border: 1px solid rgba(255,48,48,0.35);
+
+    background:
+        rgba(0,0,0,0.28);
+
+    box-shadow:
+        inset 0 0 50px rgba(255,0,0,0.04),
+        0 0 35px rgba(255,0,0,0.08);
 }
 
 
-/* System text */
+/* =========================================
+   TOP SYSTEM
+========================================= */
 
 .system-text {
     font-family: monospace;
@@ -97,18 +125,57 @@ body {
 
     font-size: 13px;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
-    margin-bottom: 25px;
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 8px #ff3030;
 
     animation: warningBlink 1.2s infinite;
 }
 
 
-/* Main title */
+.system-text::after,
+.welcome-label::after,
+.subtitle::after,
+.creator-title::after,
+.creator-name::after,
+.warning::after,
+.enter-text::after {
+    content: "█";
+
+    margin-left: 5px;
+
+    animation: cursorBlink 0.8s infinite;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome-label {
+    font-family: monospace;
+
+    color: #aaa;
+
+    font-size: 15px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
 
 .welcome-screen h1 {
-    font-size: clamp(38px, 8vw, 90px);
+    font-family: monospace;
+
+    font-size: clamp(35px, 7vw, 70px);
 
     font-weight: 900;
 
@@ -116,141 +183,243 @@ body {
 
     line-height: 1.1;
 
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.5),
-        0 0 30px rgba(255,0,0,0.4);
-}
-
-
-/* GREATESTGCOAT */
-
-.welcome-screen h1 span {
-    display: block;
-
     color: #ff3030;
-
-    margin-top: 10px;
 
     text-shadow:
         0 0 10px #ff3030,
         0 0 30px rgba(255,0,0,0.8),
-        0 0 60px rgba(255,0,0,0.45);
+        0 0 60px rgba(255,0,0,0.35);
 
-    animation: glitchTitle 2.5s infinite;
+    animation: glitchTitle 3s infinite;
 }
 
 
-/* Subtitle */
+/* =========================================
+   SUBTITLE
+========================================= */
 
 .subtitle {
-    margin-top: 25px;
+    margin-top: 10px;
 
     font-family: monospace;
 
+    color: #777;
+
     font-size: 13px;
 
-    letter-spacing: 4px;
-
-    color: #aaa;
+    letter-spacing: 5px;
 }
 
 
-/* Divider */
+/* =========================================
+   ARROW
+========================================= */
+
+.arrow {
+    margin-top: 20px;
+
+    font-family: monospace;
+
+    color: #ff3030;
+
+    font-size: 24px;
+
+    text-shadow:
+        0 0 10px #ff3030;
+
+    animation: arrowPulse 1.2s infinite;
+}
+
+
+/* =========================================
+   ACCESS MESSAGE
+========================================= */
+
+.access-message {
+    margin-top: 12px;
+
+    max-width: 650px;
+
+    font-family: monospace;
+
+    color: #ddd;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    letter-spacing: 1px;
+}
+
+
+/* ACTIVATED */
+
+.activation {
+    margin-top: 10px;
+
+    font-family: monospace;
+
+    color: #ff3030;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 8px #ff3030;
+}
+
+
+/* =========================================
+   DIVIDERS
+========================================= */
 
 .line {
-    margin: 25px 0;
+    width: 100%;
+
+    margin: 18px 0;
 
     color: #ff3030;
 
     font-family: monospace;
 
     opacity: 0.7;
+
+    text-shadow:
+        0 0 6px rgba(255,0,0,0.5);
 }
 
 
-/* Intro text */
-
-.intro {
-    font-family: monospace;
-
-    color: #ddd;
-
-    font-size: 15px;
-
-    line-height: 1.7;
-}
-
-
-/* Status box */
+/* =========================================
+   STATUS
+========================================= */
 
 .status-box {
-    margin-top: 25px;
+    width: min(430px, 100%);
 
-    padding: 18px 25px;
-
-    min-width: 310px;
+    padding: 12px 20px;
 
     text-align: left;
 
-    background: rgba(0,0,0,0.55);
+    font-family: monospace;
 
-    border: 1px solid rgba(255,48,48,0.55);
+    background:
+        rgba(0,0,0,0.35);
+
+    border-left: 2px solid #ff3030;
+
+    border-right: 2px solid #ff3030;
 
     box-shadow:
-        0 0 20px rgba(255,0,0,0.12);
-
-    font-family: monospace;
+        0 0 20px rgba(255,0,0,0.08);
 }
 
 
 .status-box p {
     margin: 7px 0;
 
-    color: #777;
+    color: #aaa;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
 }
 
 
-.status-box span {
+.status-box p::first-letter {
     color: #ff3030;
-
-    text-shadow: 0 0 8px #ff3030;
 }
 
 
-/* Warning */
+/* =========================================
+   CREATOR
+========================================= */
 
-.warning {
-    margin-top: 25px;
+.creator-title {
+    font-family: monospace;
 
+    color: #888;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+}
+
+
+.creator-name {
     font-family: monospace;
 
     color: #ff3030;
 
-    letter-spacing: 4px;
+    font-size: clamp(15px, 3vw, 21px);
 
-    animation: warningBlink 1s infinite;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px rgba(255,0,0,0.7);
+
+    animation: creatorFlicker 4s infinite;
 }
 
 
-/* Enter text */
+/* GIF SPACE */
+
+.creator-gif-space {
+    width: 70px;
+
+    height: 20px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   WARNING
+========================================= */
+
+.warning {
+    font-family: monospace;
+
+    color: #ff3030;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    line-height: 1.6;
+
+    text-shadow:
+        0 0 8px #ff3030;
+
+    animation: warningBlink 1.5s infinite;
+}
+
 
 .enter-text {
-    margin-top: 15px;
+    margin-top: 12px;
 
     font-family: monospace;
 
     color: #aaa;
 
+    font-size: 12px;
+
     letter-spacing: 3px;
 }
 
 
-/* ENTER button */
+/* =========================================
+   ENTER BUTTON
+========================================= */
 
 .welcome-screen button {
-    margin-top: 18px;
+    margin-top: 15px;
 
-    padding: 13px 42px;
+    padding: 12px 32px;
 
     background: transparent;
 
@@ -260,9 +429,9 @@ body {
 
     font-family: monospace;
 
-    font-size: 15px;
+    font-size: 13px;
 
-    letter-spacing: 4px;
+    letter-spacing: 3px;
 
     cursor: pointer;
 
@@ -273,7 +442,7 @@ body {
 .welcome-screen button:hover {
     background: #ff3030;
 
-    color: black;
+    color: #000;
 
     box-shadow:
         0 0 20px #ff3030,
@@ -319,8 +488,6 @@ body {
 }
 
 
-/* Dark gradient */
-
 .panel::before {
     content: "";
 
@@ -338,8 +505,6 @@ body {
     transition: 0.5s;
 }
 
-
-/* Panel text */
 
 .panel h2 {
     position: relative;
@@ -360,8 +525,6 @@ body {
     z-index: 1;
 }
 
-
-/* Manga button */
 
 .panel a {
     position: relative;
@@ -391,8 +554,6 @@ body {
         0 0 20px red;
 }
 
-
-/* Panel hover */
 
 .panel:hover {
     flex: 2;
@@ -501,6 +662,19 @@ body {
 }
 
 
+@keyframes cursorBlink {
+
+    0%, 45% {
+        opacity: 1;
+    }
+
+    46%, 100% {
+        opacity: 0;
+    }
+
+}
+
+
 @keyframes glitchTitle {
 
     0%, 90%, 100% {
@@ -518,7 +692,41 @@ body {
 }
 
 
-/* Panel delays */
+@keyframes creatorFlicker {
+
+    0%, 90%, 100% {
+        opacity: 1;
+    }
+
+    92% {
+        opacity: 0.65;
+    }
+
+    94% {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes arrowPulse {
+
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(5px);
+    }
+
+}
+
+
+/* =========================================
+   PANEL DELAYS
+========================================= */
 
 .panel:nth-child(1) {
     animation-delay: 0.2s;
@@ -545,13 +753,14 @@ body {
 }
 
 
-/* Cursor glow */
+/* =========================================
+   CURSOR GLOW
+========================================= */
 
 .cursor-glow {
     position: fixed;
 
     width: 20px;
-
     height: 20px;
 
     background: red;
@@ -576,11 +785,137 @@ body {
         overflow-x: hidden;
     }
 
+
+    .welcome-screen {
+        padding: 12px;
+
+        align-items: center;
+
+        overflow-y: auto;
+    }
+
+
+    .terminal-frame {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 28px 15px;
+
+        margin: 10px 0;
+    }
+
+
+    .system-text {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .welcome-label {
+        font-size: 12px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .welcome-screen h1 {
+        font-size: clamp(25px, 8vw, 40px);
+
+        letter-spacing: 2px;
+    }
+
+
+    .subtitle {
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .access-message {
+        font-size: 11px;
+
+        max-width: 320px;
+    }
+
+
+    .activation {
+        font-size: 10px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .line {
+        font-size: 10px;
+
+        margin: 14px 0;
+    }
+
+
+    .status-box {
+        width: 100%;
+
+        max-width: 320px;
+
+        padding: 10px 12px;
+    }
+
+
+    .status-box p {
+        font-size: 10px;
+
+        margin: 6px 0;
+    }
+
+
+    .creator-title {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .creator-name {
+        font-size: 13px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .warning {
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+
+        max-width: 300px;
+    }
+
+
+    .enter-text {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .welcome-screen button {
+        padding: 10px 24px;
+
+        font-size: 11px;
+    }
+
+
     .container {
         flex-direction: column;
 
         height: auto;
     }
+
 
     .panel {
         height: 75vh;
@@ -592,11 +927,6 @@ body {
         transform: none !important;
     }
 
-    .panel.active {
-        height: 75vh;
-
-        flex: none !important;
-    }
 
     .panel h2 {
         font-size: 30px;
@@ -604,11 +934,13 @@ body {
         text-align: center;
     }
 
+
     .panel a {
         padding: 10px 20px;
 
         font-size: 15px;
     }
+
 
     .music-toggle {
         top: 12px;
@@ -616,43 +948,6 @@ body {
         right: 12px;
 
         font-size: 18px;
-    }
-
-
-    /* Mobile welcome */
-
-    .welcome-screen {
-        padding: 18px;
-    }
-
-    .welcome-screen h1 {
-        font-size: 38px;
-
-        letter-spacing: 2px;
-    }
-
-    .subtitle {
-        font-size: 11px;
-
-        letter-spacing: 2px;
-    }
-
-    .status-box {
-        width: 100%;
-
-        max-width: 320px;
-
-        min-width: 0;
-
-        padding: 15px;
-    }
-
-    .intro {
-        font-size: 13px;
-    }
-
-    .line {
-        font-size: 11px;
     }
 
     }
