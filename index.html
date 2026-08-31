@@ -2,93 +2,90 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GREATESTGCOAT // ANIME ARCHIVE</title>
+    <title>GREATESTGCOAT // ANIME DOMAIN</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 
 <!-- =========================================
-     WELCOME SCREEN
+     WELCOME / BOOT SCREEN
 ========================================= -->
 
 <div class="welcome-screen">
 
     <div class="terminal-frame">
 
-        <div class="system-text" id="systemText"></div>
+        <!-- TOP -->
+        <div class="system-text cursor-text" id="systemText"></div>
 
-        <div class="welcome-label" id="welcomeLabel"></div>
+        <div class="welcome-label cursor-text" id="welcomeLabel"></div>
 
-        <h1 id="mainTitle"></h1>
+        <h1 class="main-title cursor-text" id="mainTitle"></h1>
 
-        <p class="subtitle" id="subtitle"></p>
-
-
-        <div class="arrow" id="arrow"></div>
+        <div class="subtitle cursor-text" id="subtitle"></div>
 
 
-        <div class="access-message" id="accessMessage"></div>
+        <!-- ARROW -->
+        <div class="arrow cursor-text" id="arrow"></div>
 
 
-        <div class="activation" id="activation"></div>
+        <!-- DEVELOPMENT MESSAGE -->
+        <div class="access-message cursor-text" id="accessMessage"></div>
+
+        <div class="activation cursor-text" id="activation"></div>
 
 
-        <div class="line" id="divider1"></div>
+        <!-- LINE -->
+        <div class="line cursor-text" id="divider1"></div>
 
 
+        <!-- STATUS -->
         <div class="status-box">
 
-            <p id="status1"></p>
+            <div class="status-row cursor-text" id="status1"></div>
 
-            <p id="status2"></p>
+            <div class="status-row cursor-text" id="status2"></div>
 
-            <p id="status3"></p>
+            <div class="status-row cursor-text" id="status3"></div>
 
-            <p id="status4"></p>
-
-        </div>
-
-
-        <div class="line" id="divider2"></div>
-
-
-        <div class="creator-title" id="creatorTitle"></div>
-
-        <div class="creator-name">
-
-            <span id="creatorName"></span>
+            <div class="status-row cursor-text" id="status4"></div>
 
         </div>
 
 
-        <div class="creator-gif-space" id="creatorGifSpace">
-            <!-- NEW GIF WILL GO HERE LATER -->
-        </div>
+        <!-- LINE -->
+        <div class="line cursor-text" id="divider2"></div>
 
 
-        <div class="line" id="divider3"></div>
+        <!-- CREATOR -->
+        <div class="creator-title cursor-text" id="creatorTitle"></div>
+
+        <div class="creator-name cursor-text" id="creatorName"></div>
 
 
-        <div class="warning" id="warning"></div>
+        <!-- LINE -->
+        <div class="line cursor-text" id="divider3"></div>
 
-        <p class="enter-text" id="enterText"></p>
+
+        <!-- FINAL WARNING -->
+        <div class="warning cursor-text" id="warning"></div>
+
+        <div class="enter-text cursor-text" id="enterText"></div>
 
 
+        <!-- ENTER -->
         <button
             id="enterButton"
             onclick="enterDomain()"
             style="display:none;">
 
-            ENTER ARCHIVE →
+            ENTER ARCHIVE <span>→</span>
 
         </button>
 
@@ -107,7 +104,6 @@
     class="container"
     style="display:none;"
 >
-
 
     <div class="cursor-glow"></div>
 
@@ -251,7 +247,6 @@
 
     </div>
 
-
 </div>
 
 
@@ -270,76 +265,84 @@
 
 <script>
 
-const systemText =
-    document.getElementById("systemText");
+const elements = {
 
-const welcomeLabel =
-    document.getElementById("welcomeLabel");
+    systemText:
+        document.getElementById("systemText"),
 
-const mainTitle =
-    document.getElementById("mainTitle");
+    welcomeLabel:
+        document.getElementById("welcomeLabel"),
 
-const subtitle =
-    document.getElementById("subtitle");
+    mainTitle:
+        document.getElementById("mainTitle"),
 
-const arrow =
-    document.getElementById("arrow");
+    subtitle:
+        document.getElementById("subtitle"),
 
-const accessMessage =
-    document.getElementById("accessMessage");
+    arrow:
+        document.getElementById("arrow"),
 
-const activation =
-    document.getElementById("activation");
+    accessMessage:
+        document.getElementById("accessMessage"),
 
-const divider1 =
-    document.getElementById("divider1");
+    activation:
+        document.getElementById("activation"),
 
-const divider2 =
-    document.getElementById("divider2");
+    divider1:
+        document.getElementById("divider1"),
 
-const divider3 =
-    document.getElementById("divider3");
+    status1:
+        document.getElementById("status1"),
 
-const status1 =
-    document.getElementById("status1");
+    status2:
+        document.getElementById("status2"),
 
-const status2 =
-    document.getElementById("status2");
+    status3:
+        document.getElementById("status3"),
 
-const status3 =
-    document.getElementById("status3");
+    status4:
+        document.getElementById("status4"),
 
-const status4 =
-    document.getElementById("status4");
+    divider2:
+        document.getElementById("divider2"),
 
-const creatorTitle =
-    document.getElementById("creatorTitle");
+    creatorTitle:
+        document.getElementById("creatorTitle"),
 
-const creatorName =
-    document.getElementById("creatorName");
+    creatorName:
+        document.getElementById("creatorName"),
 
-const warning =
-    document.getElementById("warning");
+    divider3:
+        document.getElementById("divider3"),
 
-const enterText =
-    document.getElementById("enterText");
+    warning:
+        document.getElementById("warning"),
 
-const enterButton =
-    document.getElementById("enterButton");
+    enterText:
+        document.getElementById("enterText"),
+
+    enterButton:
+        document.getElementById("enterButton")
+
+};
 
 
 
-/* TYPE FUNCTION */
+/* =========================================
+   TYPE FUNCTION
+========================================= */
 
-function typeText(element, text, speed){
+function typeText(element, text, speed) {
 
-    return new Promise(function(resolve){
+    return new Promise(function(resolve) {
 
         let i = 0;
 
-        function write(){
+        element.classList.remove("typing-done");
 
-            if(i < text.length){
+        function write() {
+
+            if (i < text.length) {
 
                 element.textContent =
                     text.substring(0, i + 1);
@@ -348,9 +351,9 @@ function typeText(element, text, speed){
 
                 setTimeout(write, speed);
 
-            }
+            } else {
 
-            else{
+                element.classList.add("typing-done");
 
                 resolve();
 
@@ -366,11 +369,13 @@ function typeText(element, text, speed){
 
 
 
-/* DELAY */
+/* =========================================
+   DELAY
+========================================= */
 
-function delay(ms){
+function delay(ms) {
 
-    return new Promise(function(resolve){
+    return new Promise(function(resolve) {
 
         setTimeout(resolve, ms);
 
@@ -380,24 +385,42 @@ function delay(ms){
 
 
 
-/* START */
+/* =========================================
+   START WELCOME
+========================================= */
 
-async function startWelcome(){
+async function startWelcome() {
 
+
+    /* CONNECTION */
 
     await typeText(
-        systemText,
+        elements.systemText,
         "[ CONNECTION ESTABLISHED ]",
-        55
+        48
     );
 
-    await delay(500);
+    await delay(550);
 
 
+
+    /* WELCOME */
 
     await typeText(
-        welcomeLabel,
+        elements.welcomeLabel,
         "WELCOME TO",
+        65
+    );
+
+    await delay(350);
+
+
+
+    /* MAIN TITLE */
+
+    await typeText(
+        elements.mainTitle,
+        "█ GREATESTGCOAT █",
         70
     );
 
@@ -405,178 +428,195 @@ async function startWelcome(){
 
 
 
-    await typeText(
-        mainTitle,
-        "█ GREATESTGCOAT █",
-        75
-    );
-
-    await delay(300);
-
-
+    /* SUBTITLE */
 
     await typeText(
-        subtitle,
+        elements.subtitle,
         "// ANIME DOMAIN //",
-        55
+        48
     );
 
-    await delay(450);
+    await delay(400);
 
 
+
+    /* ARROW */
 
     await typeText(
-        arrow,
+        elements.arrow,
         "↓",
-        80
-    );
-
-    await delay(300);
-
-
-
-    await typeText(
-        accessMessage,
-        "STILL IN DEVELOPMENT —",
-        40
-    );
-
-    await typeText(
-        accessMessage,
-        "STILL IN DEVELOPMENT — ARTHUR JUST GRANTED THIS GROUP EARLY ACCESS.",
-        25
-    );
-
-    await delay(500);
-
-
-
-    await typeText(
-        activation,
-        "THE DOMAIN HAS BEEN ACTIVATED.",
-        45
-    );
-
-    await delay(500);
-
-
-
-    await typeText(
-        divider1,
-        "────────────────────────────",
-        15
-    );
-
-    await delay(250);
-
-
-
-    await typeText(
-        status1,
-        "MANHWA ARCHIVE          ✓",
-        30
-    );
-
-    await delay(150);
-
-
-    await typeText(
-        status2,
-        "MANGA ARCHIVE           ✓",
-        30
-    );
-
-    await delay(150);
-
-
-    await typeText(
-        status3,
-        "COMMUNITY ACCESS        ✓",
-        30
-    );
-
-    await delay(150);
-
-
-    await typeText(
-        status4,
-        "SYSTEM STATUS           ONLINE",
-        30
-    );
-
-    await delay(500);
-
-
-
-    await typeText(
-        divider2,
-        "────────────────────────────",
-        15
+        100
     );
 
     await delay(350);
 
 
 
+    /* DEVELOPMENT */
+
     await typeText(
-        creatorTitle,
-        "CREATED & DESIGNED BY",
-        45
+        elements.accessMessage,
+        "STILL IN DEVELOPMENT —",
+        38
     );
 
-    await delay(250);
-
-
+    await delay(180);
 
     await typeText(
-        creatorName,
-        "MIMO'S LOVERBOI — KSHITIZ",
-        50
-    );
-
-    await delay(450);
-
-
-
-    await typeText(
-        divider3,
-        "────────────────────────────",
-        15
-    );
-
-    await delay(400);
-
-
-
-    await typeText(
-        warning,
-        "YOU WERE NOT SUPPOSED TO FIND THIS.",
-        45
-    );
-
-    await delay(400);
-
-
-
-    await typeText(
-        enterText,
-        "ACCESS THE ARCHIVE",
-        45
+        elements.accessMessage,
+        "STILL IN DEVELOPMENT — ARTHUR JUST GRANTED THIS GROUP EARLY ACCESS.",
+        22
     );
 
     await delay(500);
 
 
 
-    enterButton.style.display = "block";
+    /* ACTIVATED */
+
+    await typeText(
+        elements.activation,
+        "THE DOMAIN HAS BEEN ACTIVATED.",
+        42
+    );
+
+    await delay(500);
+
+
+
+    /* LINE */
+
+    await typeText(
+        elements.divider1,
+        "────────────────────────────────",
+        12
+    );
+
+    await delay(300);
+
+
+
+    /* STATUS */
+
+    await typeText(
+        elements.status1,
+        "MANHWA ARCHIVE          ✓",
+        28
+    );
+
+    await delay(150);
+
+
+    await typeText(
+        elements.status2,
+        "MANGA ARCHIVE           ✓",
+        28
+    );
+
+    await delay(150);
+
+
+    await typeText(
+        elements.status3,
+        "COMMUNITY ACCESS        ✓",
+        28
+    );
+
+    await delay(150);
+
+
+    await typeText(
+        elements.status4,
+        "SYSTEM STATUS           ONLINE",
+        28
+    );
+
+    await delay(500);
+
+
+
+    /* LINE */
+
+    await typeText(
+        elements.divider2,
+        "────────────────────────────────",
+        12
+    );
+
+    await delay(350);
+
+
+
+    /* CREATOR */
+
+    await typeText(
+        elements.creatorTitle,
+        "CREATED & DESIGNED BY",
+        42
+    );
+
+    await delay(300);
+
+
+    await typeText(
+        elements.creatorName,
+        "MIMO'S LOVERBOI — KSHITIZ",
+        48
+    );
+
+    await delay(500);
+
+
+
+    /* LINE */
+
+    await typeText(
+        elements.divider3,
+        "────────────────────────────────",
+        12
+    );
+
+    await delay(450);
+
+
+
+    /* WARNING */
+
+    await typeText(
+        elements.warning,
+        "YOU WERE NOT SUPPOSED TO FIND THIS.",
+        42
+    );
+
+    await delay(450);
+
+
+
+    /* ENTER TEXT */
+
+    await typeText(
+        elements.enterText,
+        "ACCESS THE ARCHIVE",
+        42
+    );
+
+    await delay(550);
+
+
+
+    /* BUTTON */
+
+    elements.enterButton.style.display = "inline-flex";
 
 }
 
 
 
-/* ENTER */
+/* =========================================
+   ENTER DOMAIN
+========================================= */
 
-function enterDomain(){
+function enterDomain() {
 
     const welcome =
         document.querySelector(".welcome-screen");
@@ -585,28 +625,24 @@ function enterDomain(){
         document.getElementById("anime-domain");
 
 
-    welcome.style.transition =
-        "opacity 0.5s ease";
-
-    welcome.style.opacity =
-        "0";
+    welcome.classList.add("exit");
 
 
-    setTimeout(function(){
+    setTimeout(function() {
 
-        welcome.style.display =
-            "none";
+        welcome.style.display = "none";
 
-        archive.style.display =
-            "flex";
+        archive.style.display = "flex";
 
-    }, 500);
+    }, 650);
 
 }
 
 
 
-/* START */
+/* =========================================
+   START
+========================================= */
 
 startWelcome();
 
