@@ -22,40 +22,77 @@
 
 <div class="welcome-screen">
 
-    <div class="system-text" id="systemText"></div>
+    <div class="terminal-frame">
 
-    <h1 id="mainTitle"></h1>
+        <div class="system-text" id="systemText"></div>
 
-    <p class="subtitle" id="subtitle"></p>
+        <div class="welcome-label" id="welcomeLabel"></div>
 
-    <div class="line" id="divider"></div>
+        <h1 id="mainTitle"></h1>
 
-    <div class="intro" id="intro"></div>
+        <p class="subtitle" id="subtitle"></p>
 
-    <div class="status-box">
 
-        <p id="status1"></p>
+        <div class="arrow" id="arrow"></div>
 
-        <p id="status2"></p>
 
-        <p id="status3"></p>
+        <div class="access-message" id="accessMessage"></div>
 
-        <p id="status4"></p>
+
+        <div class="activation" id="activation"></div>
+
+
+        <div class="line" id="divider1"></div>
+
+
+        <div class="status-box">
+
+            <p id="status1"></p>
+
+            <p id="status2"></p>
+
+            <p id="status3"></p>
+
+            <p id="status4"></p>
+
+        </div>
+
+
+        <div class="line" id="divider2"></div>
+
+
+        <div class="creator-title" id="creatorTitle"></div>
+
+        <div class="creator-name">
+
+            <span id="creatorName"></span>
+
+        </div>
+
+
+        <div class="creator-gif-space" id="creatorGifSpace">
+            <!-- NEW GIF WILL GO HERE LATER -->
+        </div>
+
+
+        <div class="line" id="divider3"></div>
+
+
+        <div class="warning" id="warning"></div>
+
+        <p class="enter-text" id="enterText"></p>
+
+
+        <button
+            id="enterButton"
+            onclick="enterDomain()"
+            style="display:none;">
+
+            ENTER ARCHIVE →
+
+        </button>
 
     </div>
-
-    <div class="warning" id="warning"></div>
-
-    <p class="enter-text" id="enterText"></p>
-
-    <button
-        id="enterButton"
-        onclick="enterDomain()"
-        style="display:none;">
-
-        ENTER ARCHIVE
-
-    </button>
 
 </div>
 
@@ -233,11 +270,11 @@
 
 <script>
 
-
-/* ELEMENTS */
-
 const systemText =
     document.getElementById("systemText");
+
+const welcomeLabel =
+    document.getElementById("welcomeLabel");
 
 const mainTitle =
     document.getElementById("mainTitle");
@@ -245,11 +282,23 @@ const mainTitle =
 const subtitle =
     document.getElementById("subtitle");
 
-const divider =
-    document.getElementById("divider");
+const arrow =
+    document.getElementById("arrow");
 
-const intro =
-    document.getElementById("intro");
+const accessMessage =
+    document.getElementById("accessMessage");
+
+const activation =
+    document.getElementById("activation");
+
+const divider1 =
+    document.getElementById("divider1");
+
+const divider2 =
+    document.getElementById("divider2");
+
+const divider3 =
+    document.getElementById("divider3");
 
 const status1 =
     document.getElementById("status1");
@@ -262,6 +311,12 @@ const status3 =
 
 const status4 =
     document.getElementById("status4");
+
+const creatorTitle =
+    document.getElementById("creatorTitle");
+
+const creatorName =
+    document.getElementById("creatorName");
 
 const warning =
     document.getElementById("warning");
@@ -281,7 +336,6 @@ function typeText(element, text, speed){
     return new Promise(function(resolve){
 
         let i = 0;
-
 
         function write(){
 
@@ -303,7 +357,6 @@ function typeText(element, text, speed){
             }
 
         }
-
 
         write();
 
@@ -332,150 +385,190 @@ function delay(ms){
 async function startWelcome(){
 
 
-    /* 1 */
-
     await typeText(
         systemText,
         "[ CONNECTION ESTABLISHED ]",
         55
     );
 
-
-    await delay(600);
-
+    await delay(500);
 
 
-    /* 2 */
+
+    await typeText(
+        welcomeLabel,
+        "WELCOME TO",
+        70
+    );
+
+    await delay(350);
+
+
 
     await typeText(
         mainTitle,
-        "GREATESTGCOAT",
+        "█ GREATESTGCOAT █",
+        75
+    );
+
+    await delay(300);
+
+
+
+    await typeText(
+        subtitle,
+        "// ANIME DOMAIN //",
+        55
+    );
+
+    await delay(450);
+
+
+
+    await typeText(
+        arrow,
+        "↓",
         80
     );
 
+    await delay(300);
+
+
+
+    await typeText(
+        accessMessage,
+        "STILL IN DEVELOPMENT —",
+        40
+    );
+
+    await typeText(
+        accessMessage,
+        "STILL IN DEVELOPMENT — ARTHUR JUST GRANTED THIS GROUP EARLY ACCESS.",
+        25
+    );
 
     await delay(500);
 
 
 
-    /* 3 */
-
     await typeText(
-        subtitle,
-        "Welcome to the community archive.",
+        activation,
+        "THE DOMAIN HAS BEEN ACTIVATED.",
         45
     );
 
-
-    await delay(400);
-
+    await delay(500);
 
 
-    /* 4 */
 
     await typeText(
-        divider,
+        divider1,
         "────────────────────────────",
-        20
+        15
     );
 
-
-    await delay(400);
-
+    await delay(250);
 
 
-    /* 5 */
-
-    await typeText(
-        intro,
-        "A space built around the anime, manga,",
-        40
-    );
-
-
-    intro.innerHTML += "<br>";
-
-
-    await typeText(
-        intro,
-        "and stories we enjoy together.",
-        40
-    );
-
-
-    await delay(600);
-
-
-
-    /* STATUS */
 
     await typeText(
         status1,
-        "ANIME COLLECTION     ✓",
-        35
+        "MANHWA ARCHIVE          ✓",
+        30
     );
 
-
-    await delay(180);
+    await delay(150);
 
 
     await typeText(
         status2,
-        "MANGA ARCHIVE        ✓",
-        35
+        "MANGA ARCHIVE           ✓",
+        30
     );
 
-
-    await delay(180);
+    await delay(150);
 
 
     await typeText(
         status3,
-        "COMMUNITY ACCESS     ✓",
-        35
+        "COMMUNITY ACCESS        ✓",
+        30
     );
 
-
-    await delay(180);
+    await delay(150);
 
 
     await typeText(
         status4,
-        "SYSTEM STATUS        ONLINE",
-        35
+        "SYSTEM STATUS           ONLINE",
+        30
     );
 
-
-    await delay(700);
-
+    await delay(500);
 
 
-    /* FINAL */
+
+    await typeText(
+        divider2,
+        "────────────────────────────",
+        15
+    );
+
+    await delay(350);
+
+
+
+    await typeText(
+        creatorTitle,
+        "CREATED & DESIGNED BY",
+        45
+    );
+
+    await delay(250);
+
+
+
+    await typeText(
+        creatorName,
+        "MIMO'S LOVERBOI — KSHITIZ",
+        50
+    );
+
+    await delay(450);
+
+
+
+    await typeText(
+        divider3,
+        "────────────────────────────",
+        15
+    );
+
+    await delay(400);
+
+
 
     await typeText(
         warning,
-        "WELCOME, MEMBER.",
-        55
+        "YOU WERE NOT SUPPOSED TO FIND THIS.",
+        45
     );
 
+    await delay(400);
 
-    await delay(500);
 
 
     await typeText(
         enterText,
-        "ACCESS THE ARCHIVE.",
-        50
+        "ACCESS THE ARCHIVE",
+        45
     );
-
 
     await delay(500);
 
 
-    /* BUTTON */
 
-    enterButton.style.display =
-        "block";
+    enterButton.style.display = "block";
 
 }
 
@@ -513,10 +606,9 @@ function enterDomain(){
 
 
 
-/* START TYPING */
+/* START */
 
 startWelcome();
-
 
 </script>
 
